@@ -1,0 +1,252 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.course-page{
+  width:100%;
+  background:#f5f7fb;
+}
+
+.dm-banner{
+  background:linear-gradient(
+    135deg,
+    #0a2a66,
+    #1e5eff
+  );
+  color:white;
+  text-align:center;
+  padding:140px 20px 90px;
+}
+
+.dm-banner h1{
+  font-size:55px;
+  margin-bottom:15px;
+}
+
+.dm-banner p{
+  font-size:22px;
+}
+
+.course-box{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+  display:flex;
+  gap:50px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.course-img{
+  flex:1;
+}
+
+.course-img img{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.course-content{
+  flex:1;
+}
+
+.course-content h2{
+  font-size:38px;
+  color:#0a2a66;
+  margin-bottom:20px;
+}
+
+.course-content p{
+  font-size:18px;
+  line-height:1.8;
+  color:#555;
+}
+
+.btn-group{
+  display:flex;
+  gap:15px;
+  margin-top:30px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 28px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+  background:#0a2a66;
+  color:white;
+}
+
+.btn-secondary{
+  background:#ffd700;
+  color:black;
+}
+
+.syllabus-section{
+  padding:20px 20px 80px;
+}
+
+.syllabus-section h2,
+.career-section h2{
+  text-align:center;
+  font-size:42px;
+  color:#0a2a66;
+  margin-bottom:50px;
+}
+
+.syllabus-grid,
+.career-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.syllabus-card,
+.career-card{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+.syllabus-card{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.syllabus-card h3{
+  color:#0a2a66;
+  margin-bottom:12px;
+  font-size:22px;
+}
+
+.syllabus-card p{
+  color:#444444;      
+  font-size:16px;
+  line-height:1.7;
+}
+
+
+.career-section{
+  padding:0 20px 100px;
+}
+
+.career-card{
+  background:#0a2a66;
+  color:white;
+  font-size:20px;
+  font-weight:bold;
+}
+
+@media(max-width:768px){
+
+  .dm-banner h1{
+    font-size:38px;
+  }
+
+  .dm-banner p{
+    font-size:18px;
+  }
+
+  .course-content h2{
+    font-size:30px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .dm-banner h1{
+    font-size:30px;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+}
+.form-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.form-box{
+  background: #fff;
+  width: 400px;
+  max-width: 90%;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-box h2{
+  text-align: center;
+  color: #0a2a66;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+.form-box input,
+.form-box textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.form-box textarea{
+  min-height: 80px;   /* pehle 40 ya zyada tha */
+  max-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+  padding-top: 12px;  /* placeholder niche aayega */
+}
+
+.form-box button{
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-box button:first-of-type{
+  background: #0a2a66;
+  color: #fff;
+}
+
+.form-box button:last-of-type{
+  background: #ff4d4d;
+  color: #fff;
+}
+
+@media(max-width:480px){
+  .form-box{
+    width: 95%;
+    padding: 15px;
+  }
+
+  .form-box textarea{
+    min-height: 70px;
+  }
+}
