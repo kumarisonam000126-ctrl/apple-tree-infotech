@@ -3,7 +3,7 @@ import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 
 import nodejs from "../../images/nodejs.jpg";
-import nodejsPdf from "../../assets/nodejs.pdf";
+import nodejsPdf from "../../assets/Nodejs.pdf";
 
 import "./Nodejs.css";
 const Nodejs = () => {
