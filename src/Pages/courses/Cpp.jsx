@@ -88,6 +88,8 @@ const [formData, setFormData] = useState({
     New Syllabus Download
     
     Course: C / C++ Programming
+
+    Name: ${syllabusData.name}
     
     Phone: ${syllabusData.phone}
     
@@ -116,6 +118,7 @@ const [formData, setFormData] = useState({
         setShowSyllabusForm(false);
     
         setSyllabusData({
+          name: "",
           phone: "",
           email: "",
         });
@@ -193,6 +196,18 @@ const [formData, setFormData] = useState({
     <div className="form-box">
 
       <h2>Download Syllabus</h2>
+
+      <input
+        type="text"
+        placeholder="Full Name"
+        value={syllabusData.name}
+        onChange={(e) =>
+          setSyllabusData({
+            ...syllabusData,
+            name: e.target.value,
+          })
+        }
+      />
 
       <input
         type="text"

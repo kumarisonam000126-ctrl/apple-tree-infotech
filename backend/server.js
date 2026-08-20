@@ -80,6 +80,49 @@ app.post("/syllabus", (req, res) => {
 
 });
 
+
+  // SAVE ENROLLMENT API
+app.post("/enroll", (req, res) => {
+
+  const { name, phone, email, course, message } = req.body;
+
+  if (!name || !phone || !email || !course) {
+    return res.json({
+      success: false,
+      message: "Please fill all required fields",
+    });
+  }
+
+  const sql = `
+    INSERT INTO enrollments
+    (name, phone, email, course, message)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  db.query(
+    sql,
+    [name, phone, email, course, message],
+    (err, result) => {
+
+      if (err) {
+        console.log(err);
+
+        return res.json({
+          success: false,
+          message: "Error saving enrollment",
+        });
+      }
+
+      res.json({
+        success: true,
+        message: "Enrollment submitted successfully",
+      });
+
+    }
+  );
+
+});
+
 app.listen(5000, () => {
   console.log("🚀 Server running on port 5000");
 });

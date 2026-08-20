@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 
-import cmafoundation from "../../images/cma.jpg";
+import cmafoundation from "../../images/cmafoundation.png";
 import cmaFoundationPdf from "../../assets/Cma.pdf";
 
 import "./CMAFoundation.css";
@@ -52,6 +52,8 @@ const handleSyllabusDownload = async () => {
     New Syllabus Download
     
     Course: CMA FOUNDATION Training
+
+    Name: ${syllabusData.name}
     
     Phone: ${syllabusData.phone}
     
@@ -80,6 +82,7 @@ const handleSyllabusDownload = async () => {
         setShowSyllabusForm(false);
     
         setSyllabusData({
+          name: "",
           phone: "",
           email: "",
         });
@@ -167,6 +170,18 @@ const handleSyllabusDownload = async () => {
     <div className="form-box">
 
       <h2>Download Syllabus</h2>
+
+       <input
+        type="text"
+        placeholder="Full Name"
+        value={syllabusData.name}
+        onChange={(e) =>
+          setSyllabusData({
+            ...syllabusData,
+            name: e.target.value,
+          })
+        }
+      />
 
       <input
         type="text"

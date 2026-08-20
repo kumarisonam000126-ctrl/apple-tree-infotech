@@ -10,8 +10,6 @@ const Feedback = () => {
     fullName: "",
     email: "",
     mobile: "",
-    college: "",
-    branch: "",
     feedbackPoint: "",
     message: ""
   });
@@ -43,8 +41,6 @@ const Feedback = () => {
           fullName: "",
           email: "",
           mobile: "",
-          college: "",
-          branch: "",
           feedbackPoint: "",
           message: ""
         });
@@ -391,71 +387,23 @@ const Feedback = () => {
 
                 <div className="form-group">
 
-                  <label>College Name</label>
+                  <label>Feedback Category (10/10)</label>
 
-                  <input
-                    type="text"
-                    name="college"
-                    value={form.college}
-                    onChange={handleChange}
-                    placeholder="Enter college name"
-                  />
-
-                </div>
-
-              </div>
-
-              {/* ROW 3 */}
-
-              <div className="form-row">
-
-                <div className="form-group">
-
-                  <label>Branch</label>
-
-                  <input
-                    type="text"
-                    name="branch"
-                    value={form.branch}
-                    onChange={handleChange}
-                    placeholder="Enter your branch"
-                  />
-
-                </div>
-
-                <div className="form-group">
-
-                  <label>Feedback Category</label>
-
-                  <select
-                    name="feedbackPoint"
+                  <select name="feedbackPoint"
                     value={form.feedbackPoint}
-                    onChange={handleChange}
-                    required
-                  >
-
-                    <option value="">
-                      Select Feedback
-                    </option>
-
-                    <option value="Website Design">
-                      Website Design
-                    </option>
-
-                    <option value="Content Quality">
-                      Content Quality
-                    </option>
-
-                    <option value="Performance">
-                      Performance
-                    </option>
-
-                    <option value="Overall Experience">
-                      Overall Experience
-                    </option>
-
-                  </select>
-
+                    onChange={handleChange}required>
+                  <option value="">Select Rating</option>
+                   <option value="1">1</option>
+                   <option value="2">2</option>
+                   <option value="3">3</option>
+                   <option value="4">4</option>
+                   <option value="5">5</option>
+                   <option value="6">6</option>
+                   <option value="7">7</option>
+                   <option value="8">8</option>
+                   <option value="9">9</option>
+                   <option value="10">10</option>
+             </select>
                 </div>
 
               </div>

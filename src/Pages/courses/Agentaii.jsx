@@ -3,12 +3,10 @@ import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 
 
-import android from "../../images/and.jpg";
-import androidPdf from "../../assets/Android.pdf";
-
-import "./Android.css";
-
-const Android = () => {
+import agentaii from "../../images/agentaii.webp";
+import agenticPdf from "../../assets/agentic.pdf";
+ import "./AgentAI.css";
+const Agentaii = () => {
   const [showForm, setShowForm] = useState(false);
   const [showSyllabusForm, setShowSyllabusForm] = useState(false);
 
@@ -21,7 +19,7 @@ const [syllabusData, setSyllabusData] = useState({
   name: "",
   phone: "",
   email: "",
-  course: "Android App Development",
+  course: "Python with Gen AI Agent",
   message: "",
 });
 
@@ -83,7 +81,7 @@ Message: ${formData.message}
        body: JSON.stringify({
          phone: syllabusData.phone,
          email: syllabusData.email,
-         course: "Android App Training",
+         Course: "Python with Gen AI Agent",
        }),
      });
  
@@ -95,7 +93,7 @@ Message: ${formData.message}
      const whatsappMessage = `
  New Syllabus Download
  
- Course: Android app Training
+ course: "Python with Gen AI Agent"
 
  Name: ${syllabusData.name}
  
@@ -114,9 +112,8 @@ Message: ${formData.message}
      // PDF Download
      const link = document.createElement("a");
  
-     link.href = androidPdf;
-     link.download = "Android-App-Syllabus.pdf";
- 
+     link.href = agentaiPdf;
+     link.download = "Python-GenAI-Agent-Syllabus.pdf";
      document.body.appendChild(link);
      link.click();
      document.body.removeChild(link);
@@ -126,7 +123,7 @@ Message: ${formData.message}
      setShowSyllabusForm(false);
  
      setSyllabusData({
-      name: "",
+       name: "",
        phone: "",
        email: "",
      });
@@ -242,27 +239,26 @@ Message: ${formData.message}
 
       {/* BANNER */}
       <div className="android-banner">
-        <h1>Android App Development Training</h1>
-        <p>Build Professional Android Applications from Scratch</p>
-      </div>
-
+    <h1>Python with Gen AI Agent Training</h1>
+     <p>Build Intelligent AI Agents using Python & Generative AI</p>
+   </div>
       <div className="course-page">
 
         <div className="course-box">
 
           <div className="course-img">
-            <img src={android} alt="Android Training" />
-          </div>
-
+           <img src={agentaii} alt="Python with Gen AI Agent Training" />
+         </div>
           <div className="course-content">
 
-            <h2>About Android Development Course</h2>
+            <h2>About Python with Gen AI Agent Course</h2>
 
-            <p>
-              Learn Android App Development with practical training and live projects.
-              This course covers Java, Kotlin, Android Studio, UI Design,
-              Firebase, APIs, Database Integration and Play Store Deployment.
-            </p>
+              <p>
+                 Learn Python programming with Generative AI and build intelligent AI Agents
+                 using OpenAI APIs, LangChain, Prompt Engineering, Vector Databases, RAG,
+                 Automation, and real-world AI projects. This course covers everything from
+                 Python basics to advanced AI application development. 
+             </p>
 
             <div className="btn-group">
 
@@ -289,16 +285,16 @@ Message: ${formData.message}
 
           <div className="syllabus-grid">
 
-            <div className="syllabus-card"><h3>Module 1</h3><p>Introduction to Android</p></div>
-            <div className="syllabus-card"><h3>Module 2</h3><p>Android Studio Setup</p></div>
-            <div className="syllabus-card"><h3>Module 3</h3><p>Java & Kotlin Basics</p></div>
-            <div className="syllabus-card"><h3>Module 4</h3><p>UI Design & Layouts</p></div>
-            <div className="syllabus-card"><h3>Module 5</h3><p>Activities & Intents</p></div>
-            <div className="syllabus-card"><h3>Module 6</h3><p>SQLite Database</p></div>
-            <div className="syllabus-card"><h3>Module 7</h3><p>Firebase Integration</p></div>
-            <div className="syllabus-card"><h3>Module 8</h3><p>REST API Integration</p></div>
-            <div className="syllabus-card"><h3>Module 9</h3><p>User Authentication</p></div>
-            <div className="syllabus-card"><h3>Module 10</h3><p>Play Store Deployment</p></div>
+            <div className="syllabus-card"><h3>Module 1</h3><p>Python Fundamentals</p></div>
+            <div className="syllabus-card"><h3>Module 2</h3><p>Object-Oriented Programming</p></div>
+            <div className="syllabus-card"><h3>Module 3</h3><p>Data Structures & File Handling</p></div>
+            <div className="syllabus-card"><h3>Module 4</h3><p>Generative AI Fundamentals</p></div>
+            <div className="syllabus-card"><h3>Module 5</h3><p>Prompt Engineering</p></div>
+            <div className="syllabus-card"><h3>Module 6</h3><p>OpenAI API Integration</p></div>
+            <div className="syllabus-card"><h3>Module 7</h3><p>LangChain Framework</p></div>
+            <div className="syllabus-card"><h3>Module 8</h3><p>RAG & Vector Databases</p></div>
+            <div className="syllabus-card"><h3>Module 9</h3><p>Building AI Agents</p></div>
+            <div className="syllabus-card"><h3>Module 10</h3><p>Live Projects & Deployment</p></div>
 
           </div>
 
@@ -311,12 +307,14 @@ Message: ${formData.message}
 
           <div className="career-grid">
 
-            <div className="career-card">Android Developer</div>
-            <div className="career-card">Mobile App Developer</div>
-            <div className="career-card">Kotlin Developer</div>
-            <div className="career-card">Java Developer</div>
-            <div className="career-card">App Tester</div>
-            <div className="career-card">Freelance App Developer</div>
+            <div className="career-card">Python Developer</div>
+            <div className="career-card">Generative AI Engineer</div>
+            <div className="career-card">AI Agent Developer</div>
+            <div className="career-card">LLM Application Developer</div>
+            <div className="career-card">Prompt Engineer</div>
+            <div className="career-card">Machine Learning Engineer</div>
+            <div className="career-card">AI Automation Developer</div>
+            <div className="career-card">Freelance AI Developer</div>
 
           </div>
 
@@ -329,4 +327,4 @@ Message: ${formData.message}
   );
 };
 
-export default Android;
+export default Agentaii;

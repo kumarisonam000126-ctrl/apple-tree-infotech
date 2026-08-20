@@ -81,6 +81,75 @@ Message: ${formData.message}
       alert("Something went wrong!");
     }
   };
+
+  const handleSyllabusDownload = async () => {
+            if (!syllabusData.phone || !syllabusData.email) {
+              alert("Please enter Phone Number and Email");
+              return;
+            }
+          
+            try {
+              // Backend me data save karna
+              const res = await fetch("http://localhost:5000/syllabus", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  phone: syllabusData.phone,
+                  email: syllabusData.email,
+                  course: "Php Development Training",
+                }),
+              });
+          
+              if (!res.ok) {
+                throw new Error("Backend Error");
+              }
+          
+              // WhatsApp Message
+              const whatsappMessage = `
+          New Syllabus Download
+          
+          Course: Php Development
+
+          Name: ${syllabusData.name}
+          
+          Phone: ${syllabusData.phone}
+          
+          Email: ${syllabusData.email}
+          `;
+          
+              window.open(
+                `https://wa.me/917503962162?text=${encodeURIComponent(
+                  whatsappMessage
+                )}`,
+                "_blank"
+              );
+          
+              // PDF Download
+              const link = document.createElement("a");
+          
+              link.href = phpPdf;
+              link.download = "Php-Devlopment.pdf";
+          
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+          
+              alert("Syllabus Downloaded Successfully");
+          
+              setShowSyllabusForm(false);
+          
+              setSyllabusData({
+                name:"",
+                phone: "",
+                email: "",
+              });
+            } catch (error) {
+              console.log(error);
+              alert("Something went wrong!");
+            }
+          };
    
 
   return (
@@ -151,6 +220,18 @@ Message: ${formData.message}
     <div className="form-box">
 
       <h2>Download Syllabus</h2>
+
+      <input
+        type="text"
+        placeholder="Full Name"
+        value={syllabusData.name}
+        onChange={(e) =>
+          setSyllabusData({
+            ...syllabusData,
+            name: e.target.value,
+          })
+        }
+      />
 
       <input
         type="text"
@@ -278,68 +359,4 @@ Message: ${formData.message}
   );
 };
 
-export default Php;const handleSyllabusDownload = async () => {
-            if (!syllabusData.phone || !syllabusData.email) {
-              alert("Please enter Phone Number and Email");
-              return;
-            }
-          
-            try {
-              // Backend me data save karna
-              const res = await fetch("http://localhost:5000/syllabus", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  phone: syllabusData.phone,
-                  email: syllabusData.email,
-                  course: "Php Development Training",
-                }),
-              });
-          
-              if (!res.ok) {
-                throw new Error("Backend Error");
-              }
-          
-              // WhatsApp Message
-              const whatsappMessage = `
-          New Syllabus Download
-          
-          Course: Php Development
-          
-          Phone: ${syllabusData.phone}
-          
-          Email: ${syllabusData.email}
-          `;
-          
-              window.open(
-                `https://wa.me/917503962162?text=${encodeURIComponent(
-                  whatsappMessage
-                )}`,
-                "_blank"
-              );
-          
-              // PDF Download
-              const link = document.createElement("a");
-          
-              link.href = phpPdf;
-              link.download = "Php-Devlopment.pdf";
-          
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-          
-              alert("Syllabus Downloaded Successfully");
-          
-              setShowSyllabusForm(false);
-          
-              setSyllabusData({
-                phone: "",
-                email: "",
-              });
-            } catch (error) {
-              console.log(error);
-              alert("Something went wrong!");
-            }
-          };
+export default Php;

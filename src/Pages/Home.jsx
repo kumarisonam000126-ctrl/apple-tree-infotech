@@ -9,13 +9,13 @@ import php from "../images/php.webp";
 import phy from "../images/phy.jpg";
 import ccc from "../images/ccc.webp";
 import dmt from "../images/dmt.webp";
-import fsd from "../images/fsd.webp";
+import until from "../images/until.png";
 import and from "../images/and.jpg";
 import adi from "../images/adi.png";
 import pss from "../images/pss.jpg";
 import ado from "../images/ado.png";
-import ame from "../images/ame.jpg";
-import ang from "../images/ang.webp";
+import excel1 from "../images/excel1.png";
+import angular from "../images/angular.jpg";
 import ndc from "../images/ndc.png";
 import rct from "../images/rct.png";
 import dct from "../images/dct.webp";
@@ -24,10 +24,11 @@ import fico from "../images/fico.webp";
 import sap from "../images/sap.jpg";
 import aii from "../images/aii.jpg";
 import erp from "../images/erp.jpg";
-import com from "../images/com.png";
+import ecom1 from "../images/ecom1.jpg";
 import dnh from "../images/dnh.jpg";
 import adv from "../images/adv.jpg";
 import net from "../images/net.jpg";
+import agentaii from "../images/agentaii.webp";
 import cma from "../images/cma.jpg";
 
 
@@ -66,7 +67,7 @@ const Home = () => {
 
     },
     {
-      image: fsd,
+      image: until,
       title: "WEB DESIGNING",
       desc: "Modern Responsive Websites",
       path: "/web-designing"
@@ -96,13 +97,13 @@ const Home = () => {
       path:"/animate"
     },
     {
-      image: ame,
+      image: excel1,
       title: "ADVANCE EXCEL",
       desc: "Professional Excel Skills",
       path: "/excel"
     },
     {
-      image: ang,
+      image: angular,
       title: "ANGULAR JS",
       desc: "Frontend Web Framework",
       path: "/angular"
@@ -159,7 +160,7 @@ const Home = () => {
        path: "/tally"
     },
     {
-      image: com,
+      image: ecom1,
       title: "E-COMMERCE",
       desc: "Online Business Development",
        path: "/ecommerce"
@@ -182,6 +183,13 @@ const Home = () => {
       desc: ".NET Application Development",
        path: "/dotnet"
     },
+    { 
+      image:agentaii,
+      title: "PYTHON WITH GEN-AI , AGENTIC-AI TRAINING",
+      desc: "PYTHON WITH GEN-AI , AGENTIC-AI",
+       path: "/agentaii"
+
+    },
     {
       image: cma,
       title: "CMAFoundation",
@@ -198,12 +206,9 @@ const Home = () => {
 
         <section className="hero">
           <div className="hero-content">
-            <h1>
-              Education is the
-              <span> Most Powerful </span>
-              Weapon
-            </h1>
-
+            <h1 className="typing-heading">
+  Education is the <span>Most Powerful</span> Weapon
+     </h1>
             <p>
               Welcome to Apple Tree Infotech —
               The Best IT Training Institute in Ghaziabad.

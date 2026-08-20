@@ -79,6 +79,7 @@ Message: ${formData.message}
   setShowSyllabusForm(false);
 
   setSyllabusData({
+    name: "",
     phone: "",
     email: "",
   });
@@ -163,6 +164,18 @@ Message: ${formData.message}
     <div className="form-box">
 
       <h2>Download Syllabus</h2>
+
+      <input
+        type="text"
+        placeholder="Full Name"
+        value={syllabusData.name}
+        onChange={(e) =>
+          setSyllabusData({
+            ...syllabusData,
+            name: e.target.value,
+          })
+        }
+      />
 
       <input
         type="text"

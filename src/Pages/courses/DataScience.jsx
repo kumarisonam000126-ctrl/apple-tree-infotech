@@ -89,6 +89,8 @@ const handleSyllabusDownload = async () => {
     New Syllabus Download
     
     Course: Data Science Training
+
+    Name: ${syllabusData.name}
     
     Phone: ${syllabusData.phone}
     
@@ -117,6 +119,7 @@ const handleSyllabusDownload = async () => {
         setShowSyllabusForm(false);
     
         setSyllabusData({
+          name:"",
           phone: "",
           email: "",
         });
@@ -191,6 +194,18 @@ const handleSyllabusDownload = async () => {
     <div className="form-box">
 
       <h2>Download Syllabus</h2>
+
+      <input
+        type="text"
+        placeholder="Full Name"
+        value={syllabusData.name}
+        onChange={(e) =>
+          setSyllabusData({
+            ...syllabusData,
+            name: e.target.value,
+          })
+        }
+      />
 
       <input
         type="text"

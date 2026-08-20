@@ -8,6 +8,7 @@ import Popularcourses from "../Pages/Popularcourses";
 import Gallery from "../Pages/Gallery";
 import Feedback from "../Pages/Feedback";
 
+
 // OLD COURSES
 import SpringHibernate from "../Pages/SpringHibernate";
 import NetFrame from "../Pages/NetFrame";
@@ -42,7 +43,10 @@ import Ecommerce from "../Pages/courses/Ecommerce";
 import DomainHosting from "../Pages/courses/DomainHosting";
 import Sql from "../Pages/courses/Sql";
 import Dotnet from "../Pages/courses/Dotnet";
+import Agentaii from "../Pages/courses/Agentaii";
 import CMAFoundation from "../Pages/courses/CMAFoundation";
+
+
 
 // 404 PAGE
 const NotFound = () => {
@@ -99,6 +103,7 @@ const Routing = () => {
         <Route path="/domain-hosting" element={<DomainHosting />} />
         <Route path="/sql" element={<Sql />} />
         <Route path="/dotnet" element={<Dotnet />} />
+        <Route path="/agentaii" element={<Agentaii/>}/>
         <Route path="/cma-foundation" element={<CMAFoundation />} />
 
         {/* ================= 404 ================= */}

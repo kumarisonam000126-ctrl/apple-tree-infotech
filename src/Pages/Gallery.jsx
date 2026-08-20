@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
+import umsir from "../images/umsir.jpg";
 import g1 from "../images/g1.jpeg";
 import g2 from "../images/g2.jpeg";
 import g3 from "../images/g3.jpeg";
@@ -16,10 +17,10 @@ import g11 from "../images/g11.jpeg";
 import g12 from "../images/g12.jpeg";
 
 const Gallery = () => {
-  const images = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12];
+  const images = [umsir,g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12];
 
   // Default Main Image
-  const [mainImage, setMainImage] = useState(g1);
+  const [mainImage, setMainImage] = useState(umsir);
 
   return (
     <>
@@ -42,25 +43,31 @@ const Gallery = () => {
           padding-bottom:50px;
         }
 
-        /* MAIN IMAGE */
-        .main-image-container{
-          width:92%;
-          max-width:1400px;
-          margin:auto;
-          height:78vh;
-          border-radius:25px;
-          overflow:hidden;
-          position:relative;
-          box-shadow:0 15px 40px rgba(0,0,0,0.5);
-        }
+       /* MAIN IMAGE */
+       .main-image-container{
+        width:92%;
+        max-width:1400px;
+        margin:auto;
+        height:78vh;
+        border-radius:25px;
+        overflow:hidden;
+        position:relative;
+        background:#111;
+        box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
 
-        .main-image{
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          transition:all 0.5s ease-in-out;
-        }
+       .main-image{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        transition:all 0.5s ease-in-out;
+}
 
+/* Sirf portrait image ke liye */
+.main-image.portrait{
+  object-fit:contain;
+  background:#111;
+}
         /* DARK OVERLAY */
         .main-image-container::after{
           content:"";
@@ -197,11 +204,8 @@ const Gallery = () => {
 
         {/* MAIN IMAGE */}
         <div className="main-image-container">
-          <img
-            src={mainImage}
-            alt="gallery"
-            className="main-image"
-          />
+          <img src={mainImage} alt="gallery"
+          className={`main-image ${mainImage === umsir ? "portrait" : ""}`}/>
         </div>
 
         {/* AUTO MOVING MARQUEE SLIDER */}

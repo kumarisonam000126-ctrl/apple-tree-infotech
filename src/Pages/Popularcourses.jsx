@@ -8,28 +8,28 @@ import php from "../images/php.webp";
 import phy from "../images/phy.jpg";
 import ccc from "../images/ccc.webp";
 import dmt from "../images/dmt.webp";
-import fsd from "../images/fsd.webp";
+import until from "../images/until.png";
 import and from "../images/and.jpg";
 import adi from "../images/adi.png";
 import pss from "../images/pss.jpg";
 import ado from "../images/ado.png";
-import ame from "../images/ame.jpg";
-import ang from "../images/ang.webp";
+import excel1 from "../images/excel.png";
+import angular from "../images/angular.jpg";
 import ndc from "../images/ndc.png";
 import rct from "../images/rct.png";
-import dct from "../images/dct.webp";
+import Dataa from "../images/Dataa.jpg";
 import mnc from "../images/mnc.jpg";
 import fico from "../images/fico.webp";
 import sap from "../images/sap.jpg";
 import aii from "../images/aii.jpg";
 import erp from "../images/erp.jpg";
-import com from "../images/com.png";
+import ecom1 from "../images/ecom1.jpg";
 import dnh from "../images/dnh.jpg";
 import adv from "../images/adv.jpg";
 import net from "../images/net.jpg";
+import agentaii from "../images/agentaii.webp";
 
-
-import cma from "../images/cma.jpg"; 
+import cmafoundation from "../images/cmafoundation.png"; 
 
 const Popularcourses = () => {
   const navigate = useNavigate();
@@ -163,7 +163,7 @@ const Popularcourses = () => {
           </div>
 
           <div className="courses-card" onClick={() => navigate("/web-designing")}>
-            <img src={fsd} alt="Web Design" />
+            <img src={until} alt="Web Design" />
             <h3>WEB DESIGN & DEVELOPMENT</h3>
           </div>
 
@@ -188,12 +188,12 @@ const Popularcourses = () => {
           </div>
 
           <div className="courses-card" onClick={() => navigate("/excel")}>
-            <img src={ame} alt="Excel" />
+            <img src={excel1} alt="Excel" />
             <h3>ADVANCE EXCEL TRAINING</h3>
           </div>
 
         <div className="courses-card" onClick={() => navigate("/angular")}>
-            <img src={ang} alt="Angular" />
+            <img src={angular} alt="Angular" />
             <h3>ANGULAR DEVELOPMENT</h3>
           </div>
 
@@ -208,7 +208,7 @@ const Popularcourses = () => {
           </div>
 
           <div className="courses-card" onClick={() => navigate("/data-science")}>
-            <img src={dct} alt="Data Science" />
+            <img src={Dataa} alt="Data Science" />
             <h3>DATA SCIENCE & ANALYTICS</h3>
           </div>
 
@@ -238,7 +238,7 @@ const Popularcourses = () => {
           </div>
 
           <div className="courses-card" onClick={() => navigate("/ecommerce")}>
-            <img src={com} alt="Ecommerce" />
+            <img src={ecom1} alt="Ecommerce" />
             <h3>E-COMMERCE</h3>
           </div>
 
@@ -260,13 +260,20 @@ const Popularcourses = () => {
     
           <div
             className="courses-card"
-            onClick={() => navigate("/cma-foundation")}
-          >
-            <img src={cma} alt="CMA Foundation" />
-            <h3>CMA FOUNDATION</h3>
-            <p>Cost & Management Accounting</p>
+            onClick={() => navigate("/agentaii")}>
+            <img src={agentaii} alt="AGENTAI" />
+            <h3>PYTHON WITH GEN-AI , AGENTIC-AI</h3>
+            
           </div>
 
+          <div
+            className="courses-card"
+            onClick={() => navigate("/cma-foundation")}>
+            <img src={cmafoundation} alt="CMA Foundation" />
+            <h3>CMA FOUNDATION</h3>
+            
+          </div>
+         
         </div>
       </section>
 

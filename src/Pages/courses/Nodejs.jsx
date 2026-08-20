@@ -103,6 +103,8 @@ New Syllabus Download
 
 Course: Node.js Development Training
 
+Name: ${syllabusData.name}
+
 Phone: ${syllabusData.phone}
 
 Email: ${syllabusData.email}
@@ -128,6 +130,7 @@ Email: ${syllabusData.email}
     setShowSyllabusForm(false);
 
     setSyllabusData({
+      name: "",
       phone: "",
       email: "",
     });
@@ -215,6 +218,18 @@ Email: ${syllabusData.email}
     <div className="form-box">
 
       <h2>Download Syllabus</h2>
+
+      <input
+        type="text"
+        placeholder="Full Name"
+        value={syllabusData.name}
+        onChange={(e) =>
+          setSyllabusData({
+            ...syllabusData,
+            name: e.target.value,
+          })
+        }
+      />
 
       <input
         type="text"

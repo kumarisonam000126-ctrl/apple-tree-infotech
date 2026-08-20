@@ -77,16 +77,48 @@ body {
   color: #ffffff;
   line-height: 1.2;
   margin-bottom: 25px;
+  font-weight: 700;
+
+  animation: fadeUp 1.2s ease-out;
 }
 
 .hero-content span {
   color: #4da3ff;
+  display: inline-block;
+  animation: glow 2s infinite alternate;
 }
-
 .hero-content p {
   font-size: 22px;
   color: #cfd6e4;
   line-height: 1.8;
+}
+/* Heading Fade Up */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 8px rgba(77, 163, 255, 0.3);
+    transform: scale(1);
+  }
+
+  100% {
+    text-shadow:
+      0 0 15px #4da3ff,
+      0 0 30px #4da3ff,
+      0 0 45px #4da3ff;
+    transform: scale(1.05);
+  }
 }
 
 /* ================= ABOUT ================= */

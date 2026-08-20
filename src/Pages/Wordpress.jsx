@@ -1,6 +1,6 @@
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import wordpress from "../images/wordpress.png";
+import wordd from "../images/wordd.png";
 
 const Wordpress = () => {
   return (
@@ -46,9 +46,9 @@ const Wordpress = () => {
       
         <div style={{ flex: "1 1 400px", minWidth: "300px" }}>
           <img
-            src={wordpress}
+            src={wordd}
             alt="wordpress"
-            style={{ width: "100%", height:"400px", borderRadius: "10px", objectFit: "cover" }}
+            style={{ width: "550px", height:"400px", borderRadius: "10px", objectFit: "cover" }}
           />
         </div>
       </div>
