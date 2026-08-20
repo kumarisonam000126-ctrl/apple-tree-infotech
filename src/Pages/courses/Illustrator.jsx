@@ -126,7 +126,7 @@ Message: ${formData.message}
            // PDF Download
            const link = document.createElement("a");
        
-           link.href = illusreatorPdf;
+           link.href = illustratorPdf;
            link.download = "Adobe-Illustrator.pdf";
        
            document.body.appendChild(link);

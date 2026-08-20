@@ -107,7 +107,7 @@ const handleSyllabusDownload = async () => {
         // PDF Download
         const link = document.createElement("a");
     
-        link.href = datasciencePdf;
+        link.href = dataSciencePdf;
         link.download = "Data-Science.pdf";
     
         document.body.appendChild(link);

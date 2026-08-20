@@ -112,7 +112,7 @@ Message: ${formData.message}
      // PDF Download
      const link = document.createElement("a");
  
-     link.href = agentaiPdf;
+     link.href = agenticPdf;
      link.download = "Python-GenAI-Agent-Syllabus.pdf";
      document.body.appendChild(link);
      link.click();

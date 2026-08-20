@@ -23,74 +23,123 @@ const [formData, setFormData] = useState({
   message: "",
 });
 
-const handleSyllabusDownload = async () => {
-      if (!syllabusData.phone || !syllabusData.email) {
-        alert("Please enter Phone Number and Email");
+  const handleSubmit = async () => {
+    try {
+      if (!formData.name || !formData.phone || !formData.email) {
+        alert("Please fill all required fields");
         return;
       }
-    
-      try {
-        // Backend me data save karna
-        const res = await fetch("http://localhost:5000/syllabus", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            phone: syllabusData.phone,
-            email: syllabusData.email,
-            course: "CMA FOUNDATION Training",
-          }),
-        });
-    
-        if (!res.ok) {
-          throw new Error("Backend Error");
-        }
-    
-        // WhatsApp Message
-        const whatsappMessage = `
-    New Syllabus Download
-    
-    Course: CMA FOUNDATION Training
 
-    Name: ${syllabusData.name}
-    
-    Phone: ${syllabusData.phone}
-    
-    Email: ${syllabusData.email}
-    `;
-    
-        window.open(
-          `https://wa.me/917503962162?text=${encodeURIComponent(
-            whatsappMessage
-          )}`,
-          "_blank"
-        );
-    
-        // PDF Download
-        const link = document.createElement("a");
-    
-        link.href = cmafoundationPdf;
-        link.download = "CMA-Foundation-Syllabus.pdf";
-    
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    
-        alert("Syllabus Downloaded Successfully");
-    
-        setShowSyllabusForm(false);
-    
-        setSyllabusData({
-          name: "",
-          phone: "",
-          email: "",
-        });
-      } catch (error) {
-        console.log(error);
-        alert("Something went wrong!");
+      const res = await fetch("http://localhost:5000/enroll", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        throw new Error("Backend Error");
       }
-    };
+
+      const whatsappMessage = `
+New Enrollment
+
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Course: ${formData.course}
+Message: ${formData.message}
+`;
+
+      window.open(
+        `https://wa.me/917503962162?text=${encodeURIComponent(whatsappMessage)}`,
+        "_blank"
+      );
+
+      alert("Enrollment Successful");
+      setShowForm(false);
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        course: "CMA Foundation Coaching",
+        message: "",
+      });
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong!");
+    }
+  };
+
+  const handleSyllabusDownload = async () => {
+    if (!syllabusData.phone || !syllabusData.email) {
+      alert("Please enter Phone Number and Email");
+      return;
+    }
+
+    try {
+      // Backend me data save karna
+      const res = await fetch("http://localhost:5000/syllabus", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          phone: syllabusData.phone,
+          email: syllabusData.email,
+          course: "CMA FOUNDATION Training",
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Backend Error");
+      }
+
+      // WhatsApp Message
+      const whatsappMessage = `
+New Syllabus Download
+
+Course: CMA FOUNDATION Training
+
+Name: ${syllabusData.name}
+
+Phone: ${syllabusData.phone}
+
+Email: ${syllabusData.email}
+`;
+
+      window.open(
+        `https://wa.me/917503962162?text=${encodeURIComponent(
+          whatsappMessage
+        )}`,
+        "_blank"
+      );
+
+      // PDF Download
+      const link = document.createElement("a");
+
+      link.href = cmaFoundationPdf;
+      link.download = "CMA-Foundation-Syllabus.pdf";
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      alert("Syllabus Downloaded Successfully");
+
+      setShowSyllabusForm(false);
+
+      setSyllabusData({
+        name: "",
+        phone: "",
+        email: "",
+      });
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong!");
+    }
+  };
   return (
     <>
       <Header />

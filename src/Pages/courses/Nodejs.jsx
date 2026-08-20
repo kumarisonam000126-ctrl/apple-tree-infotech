@@ -7,8 +7,8 @@ import nodejsPdf from "../../assets/Nodejs.pdf";
 
 import "./Nodejs.css";
 const Nodejs = () => {
-
-const [showSyllabusForm, setShowSyllabusForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [showSyllabusForm, setShowSyllabusForm] = useState(false);
 const [formData, setFormData] = useState({
   name: "",
   phone: "",

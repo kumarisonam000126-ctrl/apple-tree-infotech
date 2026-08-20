@@ -136,15 +136,13 @@ const Home = () => {
       image: fico,
       title: "SAP FICO",
       desc: "Financial Accounting Training",
-       path: "/courses/datascience",
-        path: "/sap-fico"
+      path: "/sap-fico"
     },
     {
       image: sap,
       title: "SAP ABAP",
       desc: "SAP Programming Language",
-       path: "/courses/datascience",
-        path: "/sap-abap"
+      path: "/sap-abap"
     },
     {
       image: aii,

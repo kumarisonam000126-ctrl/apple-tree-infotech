@@ -48,9 +48,8 @@ const Feedback = () => {
       }
 
     } catch (error) {
-
+      console.error(error);
       alert("Server Error");
-
     }
   };
 

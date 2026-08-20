@@ -105,7 +105,7 @@ Message: ${formData.message}
                // PDF Download
                const link = document.createElement("a");
            
-               link.href = sapficoPdf;
+               link.href = sapFicoPdf;
                link.download = "Sap Fico.pdf";
            
                document.body.appendChild(link);
