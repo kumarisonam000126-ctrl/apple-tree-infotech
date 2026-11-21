@@ -58,7 +58,7 @@ const Admin = () => {
     } catch (err) {
       console.error("Login request error:", err);
       // Fallback check if offline or network failure
-      if (username === "sonam" && password === "apple1222") {
+      if (username === "apple" && password === "apple1222") {
         sessionStorage.setItem("adminAuthToken", "admin_local_session");
         setIsAuthenticated(true);
       } else {
@@ -308,7 +308,7 @@ const Admin = () => {
                 color: "#666"
               }}
             >
-              🔒 Authorized Access for <strong>Sonam</strong> (Apple Tree Infotech)
+              🔒 Authorized Admin Access (Apple Tree Infotech)
             </div>
           </div>
         </div>

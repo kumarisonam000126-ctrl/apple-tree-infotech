@@ -60,7 +60,7 @@ app.get(["/health", "/api/health"], (req, res) => {
 // ADMIN LOGIN API
 app.post(["/admin/login", "/api/admin/login"], (req, res) => {
   const { username, password } = req.body;
-  const adminUser = process.env.ADMIN_USERNAME || "sonam";
+  const adminUser = process.env.ADMIN_USERNAME || "apple";
   const adminPass = process.env.ADMIN_PASSWORD || "apple1222";
 
   if (!username || !password) {
