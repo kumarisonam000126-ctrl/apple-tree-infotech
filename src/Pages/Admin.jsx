@@ -2,20 +2,87 @@ import { useState, useEffect } from "react";
 import API_BASE_URL from "../api";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import logo from "../images/appletree.png";
 
 const Admin = () => {
+  // Authentication states
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authChecking, setAuthChecking] = useState(true);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginError, setLoginError] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  // Dashboard states
   const [activeTab, setActiveTab] = useState("feedbacks");
   const [feedbacks, setFeedbacks] = useState([]);
   const [enrollments, setEnrollments] = useState([]);
   const [syllabusRequests, setSyllabusRequests] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState(null);
+  const [dataError, setDataError] = useState(null);
+
+  // Check existing session on mount
+  useEffect(() => {
+    const token = sessionStorage.getItem("adminAuthToken");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+    setAuthChecking(false);
+  }, []);
+
+  // Handle Login submission
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginError("");
+    setLoginLoading(true);
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/admin/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        sessionStorage.setItem("adminAuthToken", data.token || "admin_session");
+        setIsAuthenticated(true);
+        setUsername("");
+        setPassword("");
+      } else {
+        setLoginError(data.message || "Invalid username or password. Please try again.");
+      }
+    } catch (err) {
+      console.error("Login request error:", err);
+      // Fallback check if offline or network failure
+      if (username === "admin" && password === "admin123") {
+        sessionStorage.setItem("adminAuthToken", "admin_local_session");
+        setIsAuthenticated(true);
+      } else {
+        setLoginError("Invalid credentials or server unavailable.");
+      }
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  // Handle Logout
+  const handleLogout = () => {
+    sessionStorage.removeItem("adminAuthToken");
+    setIsAuthenticated(false);
+    setFeedbacks([]);
+    setEnrollments([]);
+    setSyllabusRequests([]);
+  };
 
   // Fetch all data from backend APIs
   const fetchData = async () => {
+    if (!isAuthenticated) return;
     setLoading(true);
-    setError(null);
+    setDataError(null);
     try {
       const [fbRes, enRes, sylRes] = await Promise.all([
         fetch(`${API_BASE_URL}/feedbacks`).then((r) => r.json()).catch(() => ({ data: [] })),
@@ -28,20 +95,23 @@ const Admin = () => {
       setSyllabusRequests(Array.isArray(sylRes?.data) ? sylRes.data : []);
     } catch (err) {
       console.error("Error loading dashboard data:", err);
-      setError("Failed to fetch latest data. Please click Refresh.");
+      setDataError("Failed to fetch latest data. Please click Refresh.");
     } finally {
       setLoading(false);
     }
   };
 
+  // Fetch data whenever authentication status becomes true
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (isAuthenticated) {
+      fetchData();
+    }
+  }, [isAuthenticated]);
 
   // CSV Export utility
   const exportToCSV = (data, filename) => {
     if (!data || data.length === 0) {
-      alert("No data available to export");
+      alert("No records available to export");
       return;
     }
     const headers = Object.keys(data[0]);
@@ -74,39 +144,251 @@ const Admin = () => {
   const filteredEnrollments = filterList(enrollments);
   const filteredSyllabus = filterList(syllabusRequests);
 
+  // If checking initial session
+  if (authChecking) {
+    return null;
+  }
+
+  // ==========================================
+  // VIEW 1: SECURE LOGIN SCREEN (When not logged in)
+  // ==========================================
+  if (!isAuthenticated) {
+    return (
+      <>
+        <Header />
+        <div
+          style={{
+            minHeight: "90vh",
+            backgroundColor: "#f4f6f9",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: "120px",
+            paddingBottom: "60px",
+            paddingLeft: "20px",
+            paddingRight: "20px"
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              maxWidth: "420px",
+              backgroundColor: "#ffffff",
+              borderRadius: "12px",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.08)",
+              padding: "40px 30px",
+              borderTop: "6px solid #800000",
+              textAlign: "center"
+            }}
+          >
+            {/* LOGO & HEADING */}
+            <div style={{ marginBottom: "25px" }}>
+              <img
+                src={logo}
+                alt="Apple Tree Logo"
+                style={{ width: "65px", height: "65px", marginBottom: "12px" }}
+              />
+              <h2 style={{ fontSize: "24px", color: "#800000", fontWeight: "700", marginBottom: "6px" }}>
+                Admin Portal Login
+              </h2>
+              <p style={{ color: "#666", fontSize: "14px" }}>
+                Restricted access. Please sign in to view student inquiries and submissions.
+              </p>
+            </div>
+
+            {/* ERROR ALERT */}
+            {loginError && (
+              <div
+                style={{
+                  backgroundColor: "#fff5f5",
+                  color: "#e53e3e",
+                  padding: "10px 14px",
+                  borderRadius: "6px",
+                  fontSize: "13px",
+                  fontWeight: "500",
+                  marginBottom: "20px",
+                  border: "1px solid #fed7d7",
+                  textAlign: "left"
+                }}
+              >
+                ⚠️ {loginError}
+              </div>
+            )}
+
+            {/* LOGIN FORM */}
+            <form onSubmit={handleLogin} style={{ textAlign: "left" }}>
+              <div style={{ marginBottom: "18px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    fontSize: "13px",
+                    fontWeight: "600",
+                    color: "#333",
+                    marginBottom: "6px"
+                  }}
+                >
+                  Admin Username
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 14px",
+                    borderRadius: "6px",
+                    border: "1px solid #ced4da",
+                    fontSize: "14px",
+                    boxSizing: "border-box",
+                    outline: "none"
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: "22px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                  <label style={{ fontSize: "13px", fontWeight: "600", color: "#333" }}>
+                    Password
+                  </label>
+                  <span
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{ fontSize: "12px", color: "#007bff", cursor: "pointer", userSelect: "none" }}
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </span>
+                </div>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 14px",
+                    borderRadius: "6px",
+                    border: "1px solid #ced4da",
+                    fontSize: "14px",
+                    boxSizing: "border-box",
+                    outline: "none"
+                  }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loginLoading}
+                style={{
+                  width: "100%",
+                  backgroundColor: "#800000",
+                  color: "#fff",
+                  border: "none",
+                  padding: "13px",
+                  borderRadius: "6px",
+                  fontSize: "15px",
+                  fontWeight: "600",
+                  cursor: loginLoading ? "not-allowed" : "pointer",
+                  opacity: loginLoading ? 0.8 : 1,
+                  transition: "background 0.2s"
+                }}
+              >
+                {loginLoading ? "Verifying..." : "🔐 Sign In to Dashboard"}
+              </button>
+            </form>
+
+            {/* CREDENTIALS HINT */}
+            <div
+              style={{
+                marginTop: "25px",
+                paddingTop: "15px",
+                borderTop: "1px solid #eee",
+                fontSize: "12px",
+                color: "#888"
+              }}
+            >
+              Default Credentials: <strong style={{ color: "#333" }}>admin</strong> / <strong style={{ color: "#333" }}>admin123</strong>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  // ==========================================
+  // VIEW 2: AUTHENTICATED ADMIN DASHBOARD
+  // ==========================================
   return (
     <>
       <Header />
       <div style={{ minHeight: "85vh", backgroundColor: "#f8f9fa", paddingTop: "140px", paddingBottom: "60px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
           
-          {/* HEADER & METRICS */}
+          {/* HEADER & CONTROLS */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", marginBottom: "25px", gap: "15px" }}>
             <div>
-              <h1 style={{ fontSize: "28px", color: "#800000", fontWeight: "700", marginBottom: "5px" }}>
-                Admin Portal & Submissions
-              </h1>
-              <p style={{ color: "#666", fontSize: "14px" }}>
-                View, monitor, and export all student inquiries, feedback, and enrollments in real time.
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "5px" }}>
+                <h1 style={{ fontSize: "28px", color: "#800000", fontWeight: "700", margin: 0 }}>
+                  Admin Portal & Submissions
+                </h1>
+                <span
+                  style={{
+                    backgroundColor: "#e6fffa",
+                    color: "#234e52",
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    padding: "3px 8px",
+                    borderRadius: "12px",
+                    border: "1px solid #b2f5ea"
+                  }}
+                >
+                  ● Active Session
+                </span>
+              </div>
+              <p style={{ color: "#666", fontSize: "14px", margin: 0 }}>
+                Real-time dashboard for student feedback, syllabus requests, and course enrollments.
               </p>
             </div>
-            <div style={{ display: "flex", gap: "10px" }}>
+
+            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
               <button
                 onClick={fetchData}
                 style={{
                   backgroundColor: "#800000",
                   color: "#fff",
                   border: "none",
-                  padding: "10px 18px",
+                  padding: "9px 16px",
                   borderRadius: "6px",
                   fontWeight: "600",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
-                  gap: "6px"
+                  gap: "6px",
+                  fontSize: "14px"
                 }}
               >
                 🔄 Refresh
+              </button>
+
+              <button
+                onClick={handleLogout}
+                style={{
+                  backgroundColor: "#dc3545",
+                  color: "#fff",
+                  border: "none",
+                  padding: "9px 16px",
+                  borderRadius: "6px",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  fontSize: "14px"
+                }}
+              >
+                🔒 Logout
               </button>
             </div>
           </div>
@@ -257,9 +539,9 @@ const Admin = () => {
               <div style={{ textAlign: "center", padding: "40px", color: "#666" }}>
                 <div style={{ fontSize: "20px", marginBottom: "10px" }}>⏳ Loading records...</div>
               </div>
-            ) : error ? (
+            ) : dataError ? (
               <div style={{ textAlign: "center", padding: "30px", color: "#dc3545", backgroundColor: "#fff5f5", borderRadius: "8px" }}>
-                {error}
+                {dataError}
               </div>
             ) : (
               <div style={{ overflowX: "auto" }}>

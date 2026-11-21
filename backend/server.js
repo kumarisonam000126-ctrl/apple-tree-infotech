@@ -57,6 +57,34 @@ app.get(["/health", "/api/health"], (req, res) => {
   });
 });
 
+// ADMIN LOGIN API
+app.post(["/admin/login", "/api/admin/login"], (req, res) => {
+  const { username, password } = req.body;
+  const adminUser = process.env.ADMIN_USERNAME || "admin";
+  const adminPass = process.env.ADMIN_PASSWORD || "admin123";
+
+  if (!username || !password) {
+    return res.status(400).json({
+      success: false,
+      message: "Please enter both username and password"
+    });
+  }
+
+  if (username === adminUser && password === adminPass) {
+    const token = Buffer.from(`${adminUser}:${Date.now()}`).toString("base64");
+    return res.json({
+      success: true,
+      token,
+      message: "Login successful"
+    });
+  }
+
+  return res.status(401).json({
+    success: false,
+    message: "Invalid username or password"
+  });
+});
+
 // Fallback memory stores if cloud database is starting or syncing
 const fallbackFeedbacks = [];
 const fallbackSyllabus = [];
