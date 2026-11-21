@@ -29,7 +29,7 @@ const Feedback = () => {
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/feedback",
+        `${import.meta.env.VITE_API_URL}/feedback`,
         form
       );
 

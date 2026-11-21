@@ -38,7 +38,7 @@ const Php = () => {
   return;
 }
       // Backend call
-      const res = await fetch("http://localhost:5000/enroll", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/enroll`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ Message: ${formData.message}
           
             try {
               // Backend me data save karna
-              const res = await fetch("http://localhost:5000/syllabus", {
+              const res = await fetch(`${import.meta.env.VITE_API_URL}/syllabus`, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

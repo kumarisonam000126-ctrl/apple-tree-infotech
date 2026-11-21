@@ -56,9 +56,9 @@ const Header = () => {
 
 .nav a,
 .dropbtn {
-  color: maroon;
+  color: black;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   position: relative;
   cursor: pointer;
