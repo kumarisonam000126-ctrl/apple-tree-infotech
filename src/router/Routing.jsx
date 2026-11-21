@@ -7,6 +7,7 @@ import Industrialtraining from "../Pages/Industrialtraining";
 import Popularcourses from "../Pages/Popularcourses";
 import Gallery from "../Pages/Gallery";
 import Feedback from "../Pages/Feedback";
+import Admin from "../Pages/Admin";
 
 
 // OLD COURSES
@@ -69,6 +70,7 @@ const Routing = () => {
         <Route path="/courses" element={<Popularcourses />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/admin" element={<Admin />} />
 
         {/* ================= OLD COURSES ================= */}
         <Route path="/spring" element={<SpringHibernate />} />
