@@ -22,6 +22,10 @@ services:
         value: feedback_db
       - key: DB_PORT
         value: 3306
+      - key: DB_SSL
+        value: "true"
+      - key: FRONTEND_URL
+        sync: false
 
   # Frontend Static Site
   - type: web
