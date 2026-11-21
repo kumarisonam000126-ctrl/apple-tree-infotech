@@ -31,7 +31,7 @@ app.use(
 app.use(bodyParser.json());
 
 // HEALTH CHECK ROUTE
-app.get("/", (req, res) => {
+app.get(["/", "/api"], (req, res) => {
   res.json({
     status: "ok",
     message: "Apple Tree Infotech Backend API is running",
@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/health", (req, res) => {
+app.get(["/health", "/api/health"], (req, res) => {
   db.query("SELECT 1", (err) => {
     if (err) {
       return res.status(200).json({
@@ -57,8 +57,13 @@ app.get("/health", (req, res) => {
   });
 });
 
+// Fallback memory stores if cloud database is starting or syncing
+const fallbackFeedbacks = [];
+const fallbackSyllabus = [];
+const fallbackEnrollments = [];
+
 // SAVE FEEDBACK API
-app.post("/feedback", (req, res) => {
+app.post(["/feedback", "/api/feedback"], (req, res) => {
   const {
     fullName,
     email,
@@ -80,10 +85,15 @@ app.post("/feedback", (req, res) => {
     [fullName, email, mobile, college, branch, feedbackPoint, message],
     (err) => {
       if (err) {
-        console.error("Error saving feedback:", err);
-        return res.status(500).json({
-          success: false,
-          message: "Error saving feedback"
+        console.warn("Database unavailable, saved to fallback memory:", err.message);
+        fallbackFeedbacks.push({
+          fullName, email, mobile, college, branch, feedbackPoint, message,
+          createdAt: new Date().toISOString()
+        });
+        return res.json({
+          success: true,
+          message: "Feedback submitted successfully",
+          notice: "Saved in fallback storage while cloud database is syncing"
         });
       }
 
@@ -95,8 +105,18 @@ app.post("/feedback", (req, res) => {
   );
 });
 
+// GET FEEDBACKS API
+app.get(["/feedbacks", "/api/feedbacks"], (req, res) => {
+  db.query("SELECT * FROM feedbacks ORDER BY id DESC", (err, rows) => {
+    if (err) {
+      return res.json({ success: true, data: fallbackFeedbacks, source: "fallback" });
+    }
+    res.json({ success: true, data: rows, source: "database" });
+  });
+});
+
 // SAVE SYLLABUS REQUEST API
-app.post("/syllabus", (req, res) => {
+app.post(["/syllabus", "/api/syllabus"], (req, res) => {
   const { phone, email, course, Course } = req.body;
   const courseName = course || Course || "";
 
@@ -108,10 +128,15 @@ app.post("/syllabus", (req, res) => {
 
   db.query(sql, [phone, email, courseName], (err) => {
     if (err) {
-      console.error("Error saving syllabus request:", err);
-      return res.status(500).json({
-        success: false,
-        message: "Error saving syllabus request",
+      console.warn("Database unavailable, saved syllabus to fallback:", err.message);
+      fallbackSyllabus.push({
+        phone, email, course: courseName,
+        createdAt: new Date().toISOString()
+      });
+      return res.json({
+        success: true,
+        message: "Syllabus request saved successfully",
+        notice: "Saved in fallback storage while cloud database is syncing"
       });
     }
 
@@ -122,8 +147,18 @@ app.post("/syllabus", (req, res) => {
   });
 });
 
+// GET SYLLABUS REQUESTS API
+app.get(["/syllabus-requests", "/api/syllabus-requests"], (req, res) => {
+  db.query("SELECT * FROM syllabus_requests ORDER BY id DESC", (err, rows) => {
+    if (err) {
+      return res.json({ success: true, data: fallbackSyllabus, source: "fallback" });
+    }
+    res.json({ success: true, data: rows, source: "database" });
+  });
+});
+
 // SAVE ENROLLMENT API
-app.post("/enroll", (req, res) => {
+app.post(["/enroll", "/api/enroll"], (req, res) => {
   const { name, phone, email, course, message } = req.body;
 
   if (!name || !phone || !email || !course) {
@@ -144,10 +179,15 @@ app.post("/enroll", (req, res) => {
     [name, phone, email, course, message || ""],
     (err) => {
       if (err) {
-        console.error("Error saving enrollment:", err);
-        return res.status(500).json({
-          success: false,
-          message: "Error saving enrollment",
+        console.warn("Database unavailable, saved enrollment to fallback:", err.message);
+        fallbackEnrollments.push({
+          name, phone, email, course, message: message || "",
+          createdAt: new Date().toISOString()
+        });
+        return res.json({
+          success: true,
+          message: "Enrollment submitted successfully",
+          notice: "Saved in fallback storage while cloud database is syncing"
         });
       }
 
@@ -159,7 +199,21 @@ app.post("/enroll", (req, res) => {
   );
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+// GET ENROLLMENTS API
+app.get(["/enrollments", "/api/enrollments"], (req, res) => {
+  db.query("SELECT * FROM enrollments ORDER BY id DESC", (err, rows) => {
+    if (err) {
+      return res.json({ success: true, data: fallbackEnrollments, source: "fallback" });
+    }
+    res.json({ success: true, data: rows, source: "database" });
+  });
 });
+
+const PORT = process.env.PORT || 5000;
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;

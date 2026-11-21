@@ -35,7 +35,7 @@ const [formData, setFormData] = useState({
     
       try {
         // Backend me data save karna
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/syllabus`, {
+        const res = await fetch(`${(import.meta.env.VITE_API_URL || "/api").replace(/\/+$/, "")}/syllabus`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

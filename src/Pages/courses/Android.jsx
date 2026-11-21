@@ -33,7 +33,7 @@ const [syllabusData, setSyllabusData] = useState({
 }
     try {
       // 1. SAVE TO BACKEND
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/enroll`, {
+      const res = await fetch(`${(import.meta.env.VITE_API_URL || "/api").replace(/\/+$/, "")}/enroll`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ Message: ${formData.message}
  
    try {
      // Backend me data save karna
-     const res = await fetch(`${import.meta.env.VITE_API_URL}/syllabus`, {
+     const res = await fetch(`${(import.meta.env.VITE_API_URL || "/api").replace(/\/+$/, "")}/syllabus`, {
        method: "POST",
        headers: {
          "Content-Type": "application/json",
