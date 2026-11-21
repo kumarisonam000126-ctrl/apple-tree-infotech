@@ -58,7 +58,7 @@ const Admin = () => {
     } catch (err) {
       console.error("Login request error:", err);
       // Fallback check if offline or network failure
-      if (username === "admin" && password === "admin123") {
+      if (username === "sonam" && password === "apple1222") {
         sessionStorage.setItem("adminAuthToken", "admin_local_session");
         setIsAuthenticated(true);
       } else {
@@ -298,17 +298,17 @@ const Admin = () => {
               </button>
             </form>
 
-            {/* CREDENTIALS HINT */}
+            {/* SECURITY BADGE */}
             <div
               style={{
                 marginTop: "25px",
                 paddingTop: "15px",
                 borderTop: "1px solid #eee",
                 fontSize: "12px",
-                color: "#888"
+                color: "#666"
               }}
             >
-              Default Credentials: <strong style={{ color: "#333" }}>admin</strong> / <strong style={{ color: "#333" }}>admin123</strong>
+              🔒 Authorized Access for <strong>Sonam</strong> (Apple Tree Infotech)
             </div>
           </div>
         </div>
