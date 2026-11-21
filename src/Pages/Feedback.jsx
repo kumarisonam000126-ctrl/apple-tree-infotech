@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../api";
 
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -29,7 +30,7 @@ const Feedback = () => {
     try {
 
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/feedback`,
+        `${API_BASE_URL}/feedback`,
         form
       );
 

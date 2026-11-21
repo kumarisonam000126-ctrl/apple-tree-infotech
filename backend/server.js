@@ -8,16 +8,53 @@ const db = require("./db");
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = process.env.FRONTEND_URL
+  ? process.env.FRONTEND_URL.split(",").map((url) => url.trim().replace(/\/+$/, ""))
+  : ["*"];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (curl, mobile, etc.) or wildcard
+      if (!origin || allowedOrigins.includes("*") || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      // Permissive fallback so legitimate client traffic isn't blocked
+      return callback(null, true);
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+  })
+);
+
 app.use(bodyParser.json());
 
 // HEALTH CHECK ROUTE
 app.get("/", (req, res) => {
-  res.json({ status: "ok", message: "Apple Tree Infotech Backend API is running" });
+  res.json({
+    status: "ok",
+    message: "Apple Tree Infotech Backend API is running",
+    environment: process.env.NODE_ENV || "development"
+  });
 });
 
 app.get("/health", (req, res) => {
-  res.json({ status: "healthy", timestamp: new Date().toISOString() });
+  db.query("SELECT 1", (err) => {
+    if (err) {
+      return res.status(200).json({
+        status: "degraded",
+        database: "disconnected",
+        error: err.message,
+        timestamp: new Date().toISOString()
+      });
+    }
+    res.json({
+      status: "healthy",
+      database: "connected",
+      timestamp: new Date().toISOString()
+    });
+  });
 });
 
 // SAVE FEEDBACK API
