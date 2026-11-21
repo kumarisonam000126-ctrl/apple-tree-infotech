@@ -85,8 +85,31 @@ app.post(["/admin/login", "/api/admin/login"], (req, res) => {
   });
 });
 
-// Fallback memory stores if cloud database is starting or syncing
-const fallbackFeedbacks = [];
+// Initial fallback records from feedbacks.sql
+const fallbackFeedbacks = [
+  {
+    id: 1,
+    fullName: "sonam",
+    email: "sonam@gmail.com",
+    mobile: "6543217896",
+    college: "hlm",
+    branch: "bca",
+    feedbackPoint: "Website Design",
+    message: "hii",
+    createdAt: "2026-05-20 08:28:09"
+  },
+  {
+    id: 2,
+    fullName: "sona",
+    email: "sona@gmail.com",
+    mobile: "1234567895",
+    college: "hlm",
+    branch: "bcom",
+    feedbackPoint: "Content Quality",
+    message: "hlo",
+    createdAt: "2026-05-28 07:05:04"
+  }
+];
 const fallbackSyllabus = [];
 const fallbackEnrollments = [];
 
@@ -114,7 +137,8 @@ app.post(["/feedback", "/api/feedback"], (req, res) => {
     (err) => {
       if (err) {
         console.warn("Database unavailable, saved to fallback memory:", err.message);
-        fallbackFeedbacks.push({
+        fallbackFeedbacks.unshift({
+          id: fallbackFeedbacks.length + 1,
           fullName, email, mobile, college, branch, feedbackPoint, message,
           createdAt: new Date().toISOString()
         });
@@ -157,7 +181,8 @@ app.post(["/syllabus", "/api/syllabus"], (req, res) => {
   db.query(sql, [phone, email, courseName], (err) => {
     if (err) {
       console.warn("Database unavailable, saved syllabus to fallback:", err.message);
-      fallbackSyllabus.push({
+      fallbackSyllabus.unshift({
+        id: fallbackSyllabus.length + 1,
         phone, email, course: courseName,
         createdAt: new Date().toISOString()
       });
@@ -208,7 +233,8 @@ app.post(["/enroll", "/api/enroll"], (req, res) => {
     (err) => {
       if (err) {
         console.warn("Database unavailable, saved enrollment to fallback:", err.message);
-        fallbackEnrollments.push({
+        fallbackEnrollments.unshift({
+          id: fallbackEnrollments.length + 1,
           name, phone, email, course, message: message || "",
           createdAt: new Date().toISOString()
         });
