@@ -79,35 +79,48 @@ const Popularcourses = () => {
         }
 
         .courses-card {
-          background: #fff;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-          transition: 0.3s;
+          background: #ffffff;
+          padding: 16px;
+          border-radius: 16px;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+          border: 1px solid #e2e8f0;
+          transition: all 0.3s ease;
           text-align: center;
           cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
         .courses-card:hover {
-          transform: scale(1.05);
-          box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+          transform: translateY(-6px);
+          box-shadow: 0 12px 28px rgba(10, 42, 102, 0.15);
+          border-color: #3b82f6;
         }
 
         .courses-card img {
           width: 100%;
           height: 180px;
           object-fit: cover;
-          border-radius: 8px;
+          border-radius: 12px;
+          transition: transform 0.3s ease;
+        }
+
+        .courses-card:hover img {
+          transform: scale(1.03);
         }
 
         .courses-card h3 {
-          margin: 15px 0;
-          color: darkblue;
+          margin: 14px 0 4px;
+          color: #0a2a66;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 1.4;
         }
 
         .courses-card p {
           font-size: 14px;
-          color: #333;
+          color: #64748b;
         }
 
         @media (max-width: 900px) {

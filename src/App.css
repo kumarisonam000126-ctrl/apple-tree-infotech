@@ -32,3 +32,450 @@ a {
 li {
   list-style: none;
 }
+
+/* ========================================================
+   GLOBAL MODERN RESPONSIVE STYLES FOR ALL COURSE PAGES
+   ======================================================== */
+
+/* 1. HERO BANNER */
+div[class*="-banner"] {
+  background: linear-gradient(135deg, #050e26 0%, #0a2a66 50%, #1e5eff 100%) !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  padding: 135px 24px 65px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+div[class*="-banner"]::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(77, 163, 255, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+div[class*="-banner"] h1 {
+  font-size: clamp(26px, 5vw, 44px) !important;
+  font-weight: 800 !important;
+  margin-bottom: 14px !important;
+  line-height: 1.25 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35) !important;
+  letter-spacing: 0.5px !important;
+  color: #ffffff !important;
+}
+
+div[class*="-banner"] p {
+  font-size: clamp(15px, 2.5vw, 19px) !important;
+  color: #cbd5e1 !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  line-height: 1.7 !important;
+  font-weight: 400 !important;
+}
+
+/* 2. COURSE PAGE CONTAINER */
+.course-page {
+  width: 100% !important;
+  background: #f8fafc !important;
+  min-height: 60vh !important;
+}
+
+/* 3. MAIN COURSE BOX (IMAGE + CONTENT) */
+.course-page .course-box {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 60px 24px !important;
+  display: flex !important;
+  gap: 50px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+}
+
+/* 4. COURSE IMAGE */
+.course-page .course-img {
+  flex: 1 1 450px !important;
+  max-width: 520px !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.course-page .course-img img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 380px !important;
+  object-fit: cover !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 32px rgba(10, 42, 102, 0.16) !important;
+  border: 4px solid #ffffff !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.course-page .course-img img:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 40px rgba(10, 42, 102, 0.25) !important;
+}
+
+/* 5. COURSE CONTENT TEXT */
+.course-page .course-content {
+  flex: 1 1 500px !important;
+  width: 100% !important;
+}
+
+.course-page .course-content h2 {
+  font-size: clamp(22px, 4vw, 34px) !important;
+  font-weight: 700 !important;
+  color: #0a2a66 !important;
+  margin-bottom: 16px !important;
+  line-height: 1.3 !important;
+}
+
+.course-page .course-content p {
+  font-size: clamp(15px, 2vw, 17px) !important;
+  line-height: 1.85 !important;
+  color: #334155 !important;
+  text-align: justify !important;
+  margin-bottom: 25px !important;
+  background: #ffffff !important;
+  padding: 24px !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* 6. CALL TO ACTION BUTTONS */
+.course-page .btn-group {
+  display: flex !important;
+  gap: 16px !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  margin-top: 20px !important;
+}
+
+.course-page .btn {
+  padding: 14px 30px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  background: linear-gradient(135deg, #0a2a66, #1e5eff) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(30, 94, 255, 0.28) !important;
+  text-align: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: inherit !important;
+}
+
+.course-page .btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 24px rgba(30, 94, 255, 0.38) !important;
+}
+
+.course-page .btn.btn-secondary {
+  background: linear-gradient(135deg, #d97706, #b45309) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.28) !important;
+}
+
+.course-page .btn.btn-secondary:hover {
+  box-shadow: 0 10px 24px rgba(217, 119, 6, 0.38) !important;
+}
+
+/* 7. SYLLABUS SECTION */
+.course-page .syllabus-section {
+  padding: 50px 24px 70px !important;
+  background: #ffffff !important;
+  border-top: 1px solid #e2e8f0 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.course-page .syllabus-section h2 {
+  font-size: clamp(24px, 4.5vw, 36px) !important;
+  font-weight: 800 !important;
+  color: #0a2a66 !important;
+  text-align: center !important;
+  margin-bottom: 40px !important;
+}
+
+.course-page .syllabus-grid {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  gap: 20px !important;
+}
+
+.course-page .syllabus-card {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-left: 5px solid #1e5eff !important;
+  border-radius: 12px !important;
+  padding: 22px 20px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  text-align: left !important;
+  transition: all 0.25s ease !important;
+}
+
+.course-page .syllabus-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08) !important;
+  background: #ffffff !important;
+}
+
+.course-page .syllabus-card h3 {
+  color: #0a2a66 !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  margin-bottom: 6px !important;
+}
+
+.course-page .syllabus-card p {
+  color: #64748b !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+/* 8. CAREER SECTION */
+.course-page .career-section {
+  padding: 50px 24px 90px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+.course-page .career-section h2 {
+  font-size: clamp(24px, 4.5vw, 36px) !important;
+  font-weight: 800 !important;
+  color: #0a2a66 !important;
+  text-align: center !important;
+  margin-bottom: 40px !important;
+}
+
+.course-page .career-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 20px !important;
+}
+
+.course-page .career-card {
+  background: linear-gradient(135deg, #0a2a66, #1e5eff) !important;
+  color: #ffffff !important;
+  border-radius: 14px !important;
+  padding: 22px 18px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  box-shadow: 0 6px 18px rgba(10, 42, 102, 0.18) !important;
+  transition: all 0.25s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 75px !important;
+}
+
+.course-page .career-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 25px rgba(30, 94, 255, 0.35) !important;
+}
+
+/* 9. MODALS & POPUP FORMS */
+body .form-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(5px) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 9999 !important;
+  padding: 16px !important;
+}
+
+body .form-box {
+  background: #ffffff !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  border-radius: 16px !important;
+  padding: 28px 24px !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25) !important;
+  border-top: 5px solid #0a2a66 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
+body .form-box h2 {
+  font-size: 22px !important;
+  color: #0a2a66 !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  margin-bottom: 6px !important;
+}
+
+body .form-box input,
+body .form-box select,
+body .form-box textarea {
+  width: 100% !important;
+  padding: 12px 14px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  outline: none !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+  background: #f8fafc !important;
+  box-sizing: border-box !important;
+}
+
+body .form-box input:focus,
+body .form-box select:focus,
+body .form-box textarea:focus {
+  border-color: #1e5eff !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(30, 94, 255, 0.15) !important;
+}
+
+body .form-box button {
+  padding: 13px !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: opacity 0.2s !important;
+}
+
+body .form-box button:first-of-type {
+  background: #0a2a66 !important;
+  color: #ffffff !important;
+}
+
+body .form-box button:last-of-type {
+  background: #fee2e2 !important;
+  color: #ef4444 !important;
+}
+
+body .form-box button:hover {
+  opacity: 0.9 !important;
+}
+
+/* ========================================================
+   RESPONSIVE OVERRIDES FOR TABLET & MOBILE DEVICES
+   ======================================================== */
+
+@media (max-width: 900px) {
+  div[class*="-banner"] {
+    padding: 108px 18px 45px !important;
+  }
+
+  .course-page .course-box {
+    flex-direction: column !important;
+    gap: 32px !important;
+    padding: 35px 20px !important;
+  }
+
+  .course-page .course-img {
+    max-width: 480px !important;
+    order: 1 !important;
+  }
+
+  .course-page .course-content {
+    order: 2 !important;
+    text-align: left !important;
+  }
+
+  .course-page .course-content p {
+    padding: 18px !important;
+    margin-bottom: 20px !important;
+    text-align: left !important;
+  }
+
+  .course-page .syllabus-section {
+    padding: 35px 18px 50px !important;
+  }
+
+  .course-page .career-section {
+    padding: 35px 18px 60px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  div[class*="-banner"] {
+    padding: 98px 15px 38px !important;
+  }
+
+  .course-page .course-box {
+    padding: 25px 15px !important;
+    gap: 25px !important;
+  }
+
+  .course-page .course-img img {
+    max-height: 260px !important;
+    border-radius: 14px !important;
+  }
+
+  .course-page .course-content h2 {
+    font-size: 24px !important;
+  }
+
+  .course-page .course-content p {
+    font-size: 15px !important;
+    padding: 16px !important;
+    line-height: 1.75 !important;
+  }
+
+  .course-page .btn-group {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .course-page .btn {
+    width: 100% !important;
+    padding: 14px !important;
+  }
+
+  .course-page .syllabus-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .course-page .syllabus-card {
+    padding: 16px 14px !important;
+  }
+
+  .course-page .career-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .course-page .career-card {
+    padding: 16px 10px !important;
+    font-size: 14px !important;
+    min-height: 60px !important;
+  }
+
+  body .form-box {
+    padding: 22px 16px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .course-page .career-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
