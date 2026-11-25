@@ -33,12 +33,58 @@ li {
   list-style: none;
 }
 
+/* TOP MARQUEE REINFORCEMENT */
+.top-marquee-strip {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  height: 35px !important;
+  max-height: 35px !important;
+  background: #800000 !important;
+  color: #ffffff !important;
+  z-index: 1002 !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  padding: 0 10px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
 /* ========================================================
    GLOBAL MODERN RESPONSIVE STYLES FOR ALL COURSE PAGES
    ======================================================== */
 
-/* 1. HERO BANNER */
-div[class*="-banner"] {
+/* 1. HERO BANNERS (EXPLICIT COURSE SELECTORS) */
+.java-banner,
+.php-banner,
+.python-banner,
+.cpp-banner,
+.dm-banner,
+.wd-banner,
+.android-banner,
+.illustrator-banner,
+.photoshop-banner,
+.animate-banner,
+.excel-banner,
+.angular-banner,
+.nodejs-banner,
+.react-banner,
+.datascience-banner,
+.ml-banner,
+.sap-banner,
+.sapabap-banner,
+.ai-banner,
+.tally-banner,
+.ecommerce-banner,
+.domain-banner,
+.sql-banner,
+.dotnet-banner,
+.cma-banner {
   background: linear-gradient(135deg, #050e26 0%, #0a2a66 50%, #1e5eff 100%) !important;
   color: #ffffff !important;
   text-align: center !important;
@@ -46,9 +92,36 @@ div[class*="-banner"] {
   position: relative !important;
   overflow: hidden !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
 }
 
-div[class*="-banner"]::before {
+.java-banner::before,
+.php-banner::before,
+.python-banner::before,
+.cpp-banner::before,
+.dm-banner::before,
+.wd-banner::before,
+.android-banner::before,
+.illustrator-banner::before,
+.photoshop-banner::before,
+.animate-banner::before,
+.excel-banner::before,
+.angular-banner::before,
+.nodejs-banner::before,
+.react-banner::before,
+.datascience-banner::before,
+.ml-banner::before,
+.sap-banner::before,
+.sapabap-banner::before,
+.ai-banner::before,
+.tally-banner::before,
+.ecommerce-banner::before,
+.domain-banner::before,
+.sql-banner::before,
+.dotnet-banner::before,
+.cma-banner::before {
   content: "";
   position: absolute;
   top: -50px;
@@ -60,7 +133,31 @@ div[class*="-banner"]::before {
   pointer-events: none;
 }
 
-div[class*="-banner"] h1 {
+.java-banner h1,
+.php-banner h1,
+.python-banner h1,
+.cpp-banner h1,
+.dm-banner h1,
+.wd-banner h1,
+.android-banner h1,
+.illustrator-banner h1,
+.photoshop-banner h1,
+.animate-banner h1,
+.excel-banner h1,
+.angular-banner h1,
+.nodejs-banner h1,
+.react-banner h1,
+.datascience-banner h1,
+.ml-banner h1,
+.sap-banner h1,
+.sapabap-banner h1,
+.ai-banner h1,
+.tally-banner h1,
+.ecommerce-banner h1,
+.domain-banner h1,
+.sql-banner h1,
+.dotnet-banner h1,
+.cma-banner h1 {
   font-size: clamp(26px, 5vw, 44px) !important;
   font-weight: 800 !important;
   margin-bottom: 14px !important;
@@ -70,7 +167,31 @@ div[class*="-banner"] h1 {
   color: #ffffff !important;
 }
 
-div[class*="-banner"] p {
+.java-banner p,
+.php-banner p,
+.python-banner p,
+.cpp-banner p,
+.dm-banner p,
+.wd-banner p,
+.android-banner p,
+.illustrator-banner p,
+.photoshop-banner p,
+.animate-banner p,
+.excel-banner p,
+.angular-banner p,
+.nodejs-banner p,
+.react-banner p,
+.datascience-banner p,
+.ml-banner p,
+.sap-banner p,
+.sapabap-banner p,
+.ai-banner p,
+.tally-banner p,
+.ecommerce-banner p,
+.domain-banner p,
+.sql-banner p,
+.dotnet-banner p,
+.cma-banner p {
   font-size: clamp(15px, 2.5vw, 19px) !important;
   color: #cbd5e1 !important;
   max-width: 800px !important;
@@ -82,8 +203,11 @@ div[class*="-banner"] p {
 /* 2. COURSE PAGE CONTAINER */
 .course-page {
   width: 100% !important;
+  max-width: 100vw !important;
   background: #f8fafc !important;
   min-height: 60vh !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
 }
 
 /* 3. MAIN COURSE BOX (IMAGE + CONTENT) */
@@ -106,6 +230,7 @@ div[class*="-banner"] p {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .course-img img {
@@ -118,6 +243,7 @@ div[class*="-banner"] p {
   box-shadow: 0 12px 32px rgba(10, 42, 102, 0.16) !important;
   border: 4px solid #ffffff !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .course-img img:hover {
@@ -129,6 +255,7 @@ div[class*="-banner"] p {
 .course-page .course-content {
   flex: 1 1 500px !important;
   width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .course-content h2 {
@@ -150,6 +277,7 @@ div[class*="-banner"] p {
   border-radius: 16px !important;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05) !important;
   border: 1px solid #e2e8f0 !important;
+  box-sizing: border-box !important;
 }
 
 /* 6. CALL TO ACTION BUTTONS */
@@ -159,6 +287,7 @@ div[class*="-banner"] p {
   align-items: center !important;
   flex-wrap: wrap !important;
   margin-top: 20px !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .btn {
@@ -200,6 +329,7 @@ div[class*="-banner"] p {
   background: #ffffff !important;
   border-top: 1px solid #e2e8f0 !important;
   border-bottom: 1px solid #e2e8f0 !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .syllabus-section h2 {
@@ -216,6 +346,7 @@ div[class*="-banner"] p {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
   gap: 20px !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .syllabus-card {
@@ -227,6 +358,7 @@ div[class*="-banner"] p {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
   text-align: left !important;
   transition: all 0.25s ease !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .syllabus-card:hover {
@@ -254,6 +386,7 @@ div[class*="-banner"] p {
   padding: 50px 24px 90px !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .career-section h2 {
@@ -268,6 +401,7 @@ div[class*="-banner"] p {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
   gap: 20px !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .career-card {
@@ -284,11 +418,12 @@ div[class*="-banner"] p {
   align-items: center !important;
   justify-content: center !important;
   min-height: 75px !important;
+  box-sizing: border-box !important;
 }
 
 .course-page .career-card:hover {
   transform: translateY(-4px) !important;
-  box-shadow: 0 10px 25px rgba(30, 94, 255, 0.35) !important;
+  box-shadow: 0 10px 24px rgba(30, 94, 255, 0.35) !important;
 }
 
 /* 9. MODALS & POPUP FORMS */
@@ -302,6 +437,7 @@ body .form-overlay {
   align-items: center !important;
   z-index: 9999 !important;
   padding: 16px !important;
+  box-sizing: border-box !important;
 }
 
 body .form-box {
@@ -317,6 +453,7 @@ body .form-box {
   gap: 14px !important;
   max-height: 90vh !important;
   overflow-y: auto !important;
+  box-sizing: border-box !important;
 }
 
 body .form-box h2 {
@@ -357,6 +494,7 @@ body .form-box button {
   border: none !important;
   cursor: pointer !important;
   transition: opacity 0.2s !important;
+  box-sizing: border-box !important;
 }
 
 body .form-box button:first-of-type {
@@ -378,7 +516,37 @@ body .form-box button:hover {
    ======================================================== */
 
 @media (max-width: 900px) {
-  div[class*="-banner"] {
+  .top-marquee-strip {
+    height: 32px !important;
+    max-height: 32px !important;
+    font-size: 12px !important;
+  }
+
+  .java-banner,
+  .php-banner,
+  .python-banner,
+  .cpp-banner,
+  .dm-banner,
+  .wd-banner,
+  .android-banner,
+  .illustrator-banner,
+  .photoshop-banner,
+  .animate-banner,
+  .excel-banner,
+  .angular-banner,
+  .nodejs-banner,
+  .react-banner,
+  .datascience-banner,
+  .ml-banner,
+  .sap-banner,
+  .sapabap-banner,
+  .ai-banner,
+  .tally-banner,
+  .ecommerce-banner,
+  .domain-banner,
+  .sql-banner,
+  .dotnet-banner,
+  .cma-banner {
     padding: 108px 18px 45px !important;
   }
 
@@ -414,7 +582,31 @@ body .form-box button:hover {
 }
 
 @media (max-width: 600px) {
-  div[class*="-banner"] {
+  .java-banner,
+  .php-banner,
+  .python-banner,
+  .cpp-banner,
+  .dm-banner,
+  .wd-banner,
+  .android-banner,
+  .illustrator-banner,
+  .photoshop-banner,
+  .animate-banner,
+  .excel-banner,
+  .angular-banner,
+  .nodejs-banner,
+  .react-banner,
+  .datascience-banner,
+  .ml-banner,
+  .sap-banner,
+  .sapabap-banner,
+  .ai-banner,
+  .tally-banner,
+  .ecommerce-banner,
+  .domain-banner,
+  .sql-banner,
+  .dotnet-banner,
+  .cma-banner {
     padding: 98px 15px 38px !important;
   }
 

@@ -34,11 +34,12 @@ const Header = () => {
     <>
       <style>{`
 /* RESET & BASE */
-.marq-banner {
+.top-marquee-strip {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 100vw;
   height: 35px;
   background: #800000;
   color: #ffffff;
@@ -48,6 +49,9 @@ const Header = () => {
   font-size: 14px;
   font-weight: 500;
   padding: 0 10px;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* HEADER BAR */
@@ -382,7 +386,7 @@ const Header = () => {
 
 /* RESPONSIVE MEDIA QUERIES */
 @media (max-width: 900px) {
-  .marq-banner {
+  .top-marquee-strip {
     height: 32px;
     font-size: 12px;
   }
@@ -424,7 +428,7 @@ const Header = () => {
       `}</style>
 
       {/* TOP MARQUEE BANNER */}
-      <div className="marq-banner">
+      <div className="top-marquee-strip">
         <marquee direction="left" scrollamount="5">
           Welcome to Apple Tree Infotech | Call for any Course Enquiry: 7503962162 | Admissions Open for New Batches
         </marquee>
