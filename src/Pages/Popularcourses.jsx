@@ -111,14 +111,29 @@ const Popularcourses = () => {
         }
 
         @media (max-width: 900px) {
+          .courses-section {
+            padding: 40px 25px;
+          }
           .courses-grid {
             grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
           }
         }
 
         @media (max-width: 600px) {
+          .pop {
+            padding: 50px 15px 15px;
+            margin-top: 50px;
+          }
+          .pop h2 {
+            font-size: 22px;
+          }
+          .courses-section {
+            padding: 25px 15px;
+          }
           .courses-grid {
             grid-template-columns: 1fr;
+            gap: 15px;
           }
         }
       `}</style>

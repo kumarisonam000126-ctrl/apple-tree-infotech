@@ -124,7 +124,7 @@ const Aboutus = () => {
           }
 
           .section{
-            padding:60px 5%;
+            padding:50px 5%;
             text-align:center;
           }
 
@@ -132,6 +132,50 @@ const Aboutus = () => {
             font-size:28px;
           }
 
+          .features{
+            padding:60px 5%;
+          }
+        }
+
+        @media(max-width:480px){
+          .about-hero{
+            padding:100px 15px 35px;
+          }
+
+          .about-hero h1{
+            font-size:26px;
+          }
+
+          .about-hero p{
+            font-size:15px;
+          }
+
+          .section{
+            padding:35px 15px;
+            gap:25px;
+          }
+
+          .section-content h2{
+            font-size:24px;
+          }
+
+          .section-content p{
+            font-size:15px;
+            text-align:left;
+          }
+
+          .features{
+            padding:45px 15px;
+          }
+
+          .features h2{
+            font-size:28px;
+          }
+
+          .feature-grid{
+            grid-template-columns:1fr;
+            gap:15px;
+          }
         }
 
       `}</style>

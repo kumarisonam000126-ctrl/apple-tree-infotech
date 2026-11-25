@@ -161,7 +161,8 @@ const Gallery = () => {
         @media(max-width:768px){
 
           .gallery{
-            padding-top:75px;
+            padding-top:110px;
+            overflow-x:hidden;
           }
 
           .main-image-container{

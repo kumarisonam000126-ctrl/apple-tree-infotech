@@ -7,57 +7,65 @@ const Django = () => {
     <>
       <Header />
 
-    
-      <div
-        style={{
-          marginTop: "90px",
-          padding: "40px",
-          textAlign: "center",
-        }}
-      >
-        <h1>Djnago</h1>
-      </div>
-
-    
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "50px",
-          padding: "50px",
-          maxWidth: "1000px",
-          margin: "0 auto",
-          flexWrap: "wrap", 
-        }}
-      >
-        
-        <div style={{ flex: "1 1 400px", minWidth: "300px" }}>
-          <p style={{ fontSize: "18px", lineHeight: "1.6", textAlign: "left" }}>
-          <b> Well come to Apple Tree Infotech come with us,</b>
-            
-             Django Tutorial provides basic and advanced concepts of Django.
-             Our Django Tutorial is designed for beginners and professionals both. 
-             Django is a Web Application Framework which is used to develop web
-              applications. Our Django Tutorial includes all topics of Django 
-              such as introduction, features, installation, environment setup,
-               admin interface, cookie, form validation, Model, Template Engine,
-                Migration, MVT etc. All the topics are explained in detail so that
-                 reader can get enought knowledge of Django. Django is a web application 
-                 framework written in Python programming language. It is based on MVT
-                  (Model View Template) design pattern. The Django is very demanding
-                   due to its rapid development feature. It takes less time to build application after collecting client requirement.
-
-
-          </p>
+      <div style={{ minHeight: "100vh", paddingTop: "95px", overflowX: "hidden" }}>
+        <div
+          style={{
+            padding: "40px 20px 20px",
+            textAlign: "center",
+          }}
+        >
+          <h1 style={{ fontSize: "clamp(26px, 5vw, 38px)", color: "#0d6efd", fontWeight: "700" }}>
+            Django Framework Training
+          </h1>
         </div>
 
-      
-        <div style={{ flex: "1 1 400px", minWidth: "300px" }}>
-          <img
-            src={django}
-            alt="django"
-            style={{ width: "100%", height:"400px", borderRadius: "10px", objectFit: "cover" }}
-          />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "40px",
+            padding: "30px 20px 60px",
+            maxWidth: "1000px",
+            margin: "0 auto",
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ flex: "1 1 300px", minWidth: "0" }}>
+            <p style={{ fontSize: "16px", lineHeight: "1.8", textAlign: "left", color: "#333" }}>
+              <b style={{ color: "#0d6efd", display: "block", marginBottom: "10px", fontSize: "18px" }}>
+                Welcome to Apple Tree Infotech,
+              </b>
+              Django Tutorial provides basic and advanced concepts of Django.
+              Our Django training is designed for beginners and professionals both.
+              Django is a high-level Python web framework that encourages rapid development
+              and clean, pragmatic design. It is based on the MVT (Model View Template) design pattern.
+              Our training covers introduction, environment setup, models, views, templates, forms,
+              admin interface, authentication, REST APIs, and database migrations with real-time projects.
+            </p>
+          </div>
+
+          <div
+            style={{
+              flex: "1 1 300px",
+              minWidth: "0",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src={django}
+              alt="Django"
+              style={{
+                width: "100%",
+                maxWidth: "480px",
+                height: "auto",
+                maxHeight: "350px",
+                borderRadius: "12px",
+                objectFit: "cover",
+                boxShadow: "0 8px 25px rgba(0,0,0,0.12)",
+              }}
+            />
+          </div>
         </div>
       </div>
 

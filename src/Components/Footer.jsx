@@ -89,6 +89,21 @@ const Footer =()=>{
   color: #94a3b8;
 }
 
+@media (max-width: 768px) {
+  .footer {
+    margin-top: 40px;
+  }
+  .footer-container {
+    padding: 35px 20px;
+    gap: 25px;
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+}
+
         `}
         </style> 
 

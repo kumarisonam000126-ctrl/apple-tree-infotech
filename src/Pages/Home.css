@@ -295,28 +295,99 @@ body {
 
 /* ================= RESPONSIVE ================= */
 
+@media (max-width: 900px) {
+  .hero {
+    padding: 120px 20px 60px;
+    min-height: auto;
+  }
+
+  .about {
+    padding: 60px 5%;
+  }
+
+  .about-container {
+    gap: 30px;
+  }
+
+  .courses {
+    padding: 60px 5%;
+  }
+
+  .facts {
+    padding: 50px 15px;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-content h1 {
-    font-size: 40px;
+    font-size: 38px;
+    margin-bottom: 18px;
   }
 
   .hero-content p {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .about-text h2,
   .section-title h2,
   .facts-title h2 {
-    font-size: 30px;
+    font-size: 28px;
+  }
+
+  .about-text {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .about-box {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 25px 20px;
+  }
+
+  .courses-grid {
+    gap: 20px;
   }
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding: 110px 15px 50px;
+  }
+
   .hero-content h1 {
-    font-size: 28px;
+    font-size: 26px;
+    line-height: 1.3;
   }
 
   .hero-content p {
     font-size: 15px;
+  }
+
+  .about {
+    padding: 45px 15px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .courses {
+    padding: 45px 15px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .course-card img {
+    height: 190px;
+  }
+
+  .facts-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 }
